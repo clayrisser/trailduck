@@ -1,3 +1,6 @@
 {
-  "extends": ["jam"]
+  "extends": ["jam"],
+  "rules": {
+    "array-callback-return": "off"
+  }
 }
