@@ -1,9 +1,9 @@
 {
-  "name": "topological-cyclic-sort",
+  "name": "trailduck",
   "version": "0.0.1",
   "description": "a topological cyclic sorting algorithm based on depth-first search (dfs)",
   "keywords": [
-    "topological-cyclic-sort",
+    "trailduck",
     "dfs",
     "topological",
     "cyclic",
@@ -17,9 +17,9 @@
     "directed",
     "graph"
   ],
-  "homepage": "https://github.com/codejamninja/topological-cyclic-sort",
+  "homepage": "https://github.com/codejamninja/trailduck",
   "bugs": {
-    "url": "https://github.com/codejamninja/topological-cyclic-sort/issues",
+    "url": "https://github.com/codejamninja/trailduck/issues",
     "email": "jam@codejam.ninja"
   },
   "license": "MIT",
@@ -34,7 +34,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codejamninja/topological-cyclic-sort"
+    "url": "https://github.com/codejamninja/trailduck"
   },
   "scripts": {
     "build": "npm run test && babel src -d lib",
