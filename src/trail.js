@@ -1,7 +1,7 @@
 import Node from './node';
 
 export default class Trail {
-  description = {};
+  graph = {};
 
   tree = {};
 
@@ -11,9 +11,9 @@ export default class Trail {
 
   orderedKeys = [];
 
-  constructor(description, head) {
-    this.description = description;
-    this.createTree(this.description, head);
+  constructor(graph, head) {
+    this.graph = graph;
+    this.createTree(this.graph, head);
   }
 
   push(node) {
@@ -23,13 +23,13 @@ export default class Trail {
     }
   }
 
-  createTree(description, head) {
+  createTree(graph, head) {
     const tree = {};
-    Object.entries(description).map(([key, nodeDescription]) => {
-      tree[key] = new Node({ name: key, payload: nodeDescription.payload });
+    Object.entries(graph).map(([key, graphNode]) => {
+      tree[key] = new Node({ name: key, payload: graphNode.payload });
     });
-    Object.entries(description).map(([key, nodeDescription]) => {
-      tree[key].link(tree, nodeDescription);
+    Object.entries(graph).map(([key, graphNode]) => {
+      tree[key].link(tree, graphNode);
     });
     this.tree = tree;
     this.head = head ? this.tree[head] : this.getTrailHead();

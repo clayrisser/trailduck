@@ -2,8 +2,8 @@ import Trail from './trail';
 import Explorer from './explorer';
 
 export default class TrailDuck {
-  constructor(description, head) {
-    this.trail = new Trail(description, head);
+  constructor(graph, head) {
+    this.trail = new Trail(graph, head);
     this.explorer = new Explorer({ trail: this.trail });
     this.explorer.explore();
     this.clean();

@@ -22,9 +22,9 @@ export default class Node {
     this.payload = payload;
   }
 
-  link(tree, nodeDescription) {
-    if (nodeDescription.children) {
-      nodeDescription.children.forEach(child => {
+  link(tree, graphNode) {
+    if (graphNode.children) {
+      graphNode.children.forEach(child => {
         this.children[child] = tree[child];
         this.children[child].parents[this.name] = this;
       });
