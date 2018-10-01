@@ -52,6 +52,7 @@ export default class Explorer {
   }
 
   markCycle(cycle) {
+    this.trail.cycles.push(cycle);
     cycle.forEach(nodeName => {
       this.trail.getNode(nodeName).cycles.push(cycle);
     });

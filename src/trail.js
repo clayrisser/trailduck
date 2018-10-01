@@ -11,6 +11,8 @@ export default class Trail {
 
   orderedKeys = [];
 
+  cycles = [];
+
   constructor(graph, head) {
     this.graph = graph;
     this.createTree(this.graph, head);

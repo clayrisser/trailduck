@@ -10,14 +10,15 @@ export default class TrailDuck {
   }
 
   clean() {
+    this.cycles = this.trail.cycles;
+    this.head = this.trail.head;
     this.ordered = this.trail.ordered;
     this.tree = this.trail.tree;
-    this.head = this.trail.head;
     this.ordered.forEach(node => {
       node.clean();
     });
-    delete this.trail;
-    delete this.explorer;
     delete this.clean;
+    delete this.explorer;
+    delete this.trail;
   }
 }

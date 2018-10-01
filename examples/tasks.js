@@ -1,14 +1,18 @@
-import TopologicalCyclicSort from '../src';
+import TrailDuck from '../src';
 
-const tcs = new TopologicalCyclicSort(
+const trailDuck = new TrailDuck(
   {
     A: {
-      children: ['B']
+      children: ['B', 'D']
     },
-    B: { children: ['E', 'C'] },
-    C: { children: ['D', 'C'] },
+    B: { children: ['C'] },
+    C: { children: ['A'] },
     D: { children: ['E'] },
-    E: { children: [] }
+    E: { children: ['A'] }
   },
   'A'
 );
+
+console.log('ordered', trailDuck.ordered.map(node => node.name));
+console.log('cycles', trailDuck.cycles);
+console.log('tree', trailDuck.tree);
