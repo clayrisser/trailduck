@@ -4,6 +4,8 @@
 
 > a topological cyclic sorting algorithm based on depth-first search (dfs)
 
+Note that this algorithm cannot detect overlapping cycles
+
 Please ★ this repo if you found it useful ★ ★ ★
 
 
@@ -27,7 +29,21 @@ npm install --save trailduck
 
 ## Usage
 
-[Contribute](https://github.com/codejamninja/trailduck/blob/master/CONTRIBUTING.md) usage docs
+```js
+const trailDuck = new TrailDuck({
+  A: {
+    children: ['B', 'D', 'E']
+  },
+  B: { children: ['C'] },
+  C: { children: ['A'] },
+  D: { children: ['E'] },
+  E: { children: ['A'] }
+});
+
+console.log('cycles', trailDuck.cycles);
+console.log('ordered', trailDuck.ordered);
+console.log('tree', trailDuck.tree);
+```
 
 
 ## Support

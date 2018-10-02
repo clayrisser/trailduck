@@ -2,7 +2,7 @@ import TrailDuck from '../../src';
 
 describe('new TrailDuck(graph) - cyclic', () => {
   const trailDuck = new TrailDuck({
-    A: { children: ['B'] },
+    A: { children: ['B', 'C'] },
     B: { children: ['C'] },
     C: { children: ['A'] }
   });
@@ -41,5 +41,14 @@ describe('new TrailDuck(graph) - cyclic', () => {
     expect(trailDuck.ordered[0]).toBe(trailDuck.tree.C);
     expect(trailDuck.ordered[1]).toBe(trailDuck.tree.B);
     expect(trailDuck.ordered[2]).toBe(trailDuck.tree.A);
+  });
+
+  it('should detect cycles', async () => {
+    expect(trailDuck.cycles[0]).toEqual(['C', 'B', 'A']);
+  });
+
+  it('should not be able to detect overlapping cycles', async () => {
+    expect(trailDuck.cycles[0]).toEqual(['C', 'B', 'A']);
+    expect(trailDuck.cycles[1]).toEqual(undefined);
   });
 });
