@@ -3,7 +3,7 @@ import TrailDuck from '../src';
 const trailDuck = new TrailDuck(
   {
     A: {
-      children: ['B', 'D']
+      children: ['B', 'D', 'E']
     },
     B: { children: ['C'] },
     C: { children: ['A'] },

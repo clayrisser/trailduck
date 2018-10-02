@@ -13,9 +13,9 @@ export default class Trail {
 
   cycles = [];
 
-  constructor(graph, head) {
+  constructor(graph) {
     this.graph = graph;
-    this.createTree(this.graph, head);
+    this.createTree();
   }
 
   push(node) {
@@ -25,27 +25,34 @@ export default class Trail {
     }
   }
 
-  createTree(graph, head) {
-    const tree = {};
-    Object.entries(graph).map(([key, graphNode]) => {
-      tree[key] = new Node({ name: key, payload: graphNode.payload });
-    });
-    Object.entries(graph).map(([key, graphNode]) => {
-      tree[key].link(tree, graphNode);
-    });
-    this.tree = tree;
-    this.head = head ? this.tree[head] : this.getTrailHead();
+  createTree() {
+    if (this.graph) {
+      Object.entries(this.graph).map(([key, graphNode]) => {
+        if (key === '_genesis') {
+          throw new Error("node name '_genesis' is forbidden");
+        }
+        this.tree[key] = new Node({ name: key, payload: graphNode.payload });
+      });
+      Object.entries(this.graph).map(([key, graphNode]) => {
+        this.tree[key].link(this.tree, graphNode);
+      });
+    }
+    this.head = this.getTrailHead();
+    return this.tree;
   }
 
   getTrailHead() {
     let head = this.tree[Object.keys(this.tree)[0]];
+    if (!head) return null;
     const history = [];
     while (Object.keys(head.parents).length) {
       const parentKey = Object.keys(head.parents)[0];
       if (history.includes(parentKey)) {
-        throw new Error(
-          "trail head (root node) must be marked 'head' if root is cyclic"
-        );
+        this.tree._genesis = new Node({ name: '_genesis' });
+        this.tree._genesis.link(this.tree, {
+          children: Object.keys(this.tree)
+        });
+        return this.tree._genesis;
       }
       history.push(parentKey);
       head = head.parents[parentKey];

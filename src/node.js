@@ -29,7 +29,7 @@ export default class Node {
         this.children[child].parents[this.name] = this;
       });
     }
-    this.unvisitedChildren = this.children;
+    this.unvisitedChildren = { ...this.children };
   }
 
   visit(previous) {

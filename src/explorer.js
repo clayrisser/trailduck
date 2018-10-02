@@ -5,10 +5,13 @@ export default class Explorer {
 
   constructor({ trail }) {
     this.trail = trail;
-    this.location = this.trail.head.visit();
+    if (this.trail.head) {
+      this.location = this.trail.head.visit();
+    }
   }
 
   explore() {
+    if (!this.trail.head) return null;
     while (!this.trail.head.explored) {
       const child = this.location.getUnvisitedChild();
       if (child) {
@@ -23,6 +26,7 @@ export default class Explorer {
         this.moveBackwards();
       }
     }
+    return null;
   }
 
   moveForward(child) {
