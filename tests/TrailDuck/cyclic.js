@@ -44,11 +44,7 @@ describe('new TrailDuck(graph) - cyclic', () => {
   });
 
   it('should detect cycles', async () => {
-    expect(trailDuck.cycles[0]).toEqual(['C', 'B', 'A']);
-  });
-
-  it('should not be able to detect overlapping cycles', async () => {
-    expect(trailDuck.cycles[0]).toEqual(['C', 'B', 'A']);
-    expect(trailDuck.cycles[1]).toEqual(undefined);
+    expect(trailDuck.cycles[0]).toEqual(['A', 'B', 'C']);
+    expect(trailDuck.cycles[1]).toEqual(['A', 'C']);
   });
 });

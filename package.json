@@ -1,6 +1,6 @@
 {
   "name": "trailduck",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "a topological cyclic sorting algorithm based on depth-first search (dfs)",
   "keywords": [
     "trailduck",

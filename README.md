@@ -4,14 +4,13 @@
 
 > a topological cyclic sorting algorithm based on depth-first search (dfs)
 
-Note that this algorithm cannot detect overlapping cycles
-
 Please ★ this repo if you found it useful ★ ★ ★
 
 
 ## Features
 
 * works with cycles in the graph
+* detects overlapping cycles
 * loosly based on depth-first search (dfs)
 
 

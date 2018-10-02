@@ -3,6 +3,8 @@ export default class Explorer {
 
   trail = null;
 
+  history = [];
+
   constructor({ trail }) {
     this.trail = trail;
     if (this.trail.head) {
@@ -17,8 +19,12 @@ export default class Explorer {
       if (child) {
         if (child.visited) {
           const cycle = this.detectCycle(child);
-          if (cycle) this.markCycle(cycle);
-          this.moveBackwards();
+          if (cycle) {
+            this.markCycle(cycle);
+            this.moveBackwards();
+          } else {
+            this.moveForward(child);
+          }
         } else {
           this.moveForward(child);
         }
@@ -30,29 +36,24 @@ export default class Explorer {
   }
 
   moveForward(child) {
-    this.direction = 'forward';
+    this.history.push(this.location.name);
     this.location = child.visit(this.location);
   }
 
   moveBackwards() {
-    this.direction = 'backwards';
     this.location.explored = true;
     this.trail.push(this.location);
-    if (this.location.previous) {
-      this.location = this.location.previous;
+    if (this.history.length) {
+      this.location = this.trail.tree[this.history.pop()];
     }
   }
 
   detectCycle(child) {
-    let { location } = this;
-    const cycle = [];
-    while (child.name !== location.name) {
-      cycle.push(location.name);
-      if (!location.previous) return null;
-      location = location.previous;
+    if (this.history.includes(child.name)) {
+      const history = [...this.history, this.location.name];
+      return history.slice(history.indexOf(child.name));
     }
-    cycle.push(child.name);
-    return cycle;
+    return null;
   }
 
   markCycle(cycle) {
