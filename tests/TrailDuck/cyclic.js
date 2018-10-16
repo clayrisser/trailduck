@@ -16,10 +16,6 @@ describe('new TrailDuck(graph) - cyclic', () => {
     }
   });
 
-  it('should have null head', async () => {
-    expect(trailDuck.head).toBe(null);
-  });
-
   it('should create tree', async () => {
     expect(trailDuck.tree.A).toBe(trailDuck.tree.B.parents.A);
     expect(trailDuck.tree.B).toBe(trailDuck.tree.C.parents.B);

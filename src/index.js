@@ -10,18 +10,12 @@ export default class TrailDuck {
   }
 
   clean() {
+    this.trail.clean();
+    this.trail.ordered.pop();
+    this.trail.ordered.forEach(node => node.clean());
     this.cycles = this.trail.cycles;
-    this.head = this.trail.head;
     this.ordered = this.trail.ordered;
     this.tree = this.trail.tree;
-    if (this.head && this.head.name === '_genesis') {
-      delete this.tree._genesis;
-      this.ordered.pop();
-      this.head = null;
-    }
-    this.ordered.forEach(node => {
-      node.clean();
-    });
     delete this.clean;
     delete this.explorer;
     delete this.trail;

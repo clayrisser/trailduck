@@ -1,5 +1,5 @@
 {
-  "extends": ["jam"],
+  "extends": ["jam/base"],
   "rules": {
     "array-callback-return": "off"
   }

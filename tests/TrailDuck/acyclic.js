@@ -7,10 +7,6 @@ describe('new TrailDuck(graph) - acyclic', () => {
     C: {}
   });
 
-  it('should create head', async () => {
-    expect(trailDuck.head).toBe(trailDuck.tree.A);
-  });
-
   it('should create tree', async () => {
     expect(trailDuck.tree.A).toBe(trailDuck.tree.B.parents.A);
     expect(trailDuck.tree.B).toBe(trailDuck.tree.C.parents.B);

@@ -42,25 +42,18 @@ export default class Trail {
   }
 
   getTrailHead() {
-    let head = this.tree[Object.keys(this.tree)[0]];
-    if (!head) return null;
-    const history = [];
-    while (Object.keys(head.parents).length) {
-      const parentKey = Object.keys(head.parents)[0];
-      if (history.includes(parentKey)) {
-        this.tree._genesis = new Node({ name: '_genesis' });
-        this.tree._genesis.link(this.tree, {
-          children: Object.keys(this.tree)
-        });
-        return this.tree._genesis;
-      }
-      history.push(parentKey);
-      head = head.parents[parentKey];
-    }
-    return head;
+    this.tree._genesis = new Node({ name: '_genesis' });
+    this.tree._genesis.link(this.tree, {
+      children: Object.keys(this.tree)
+    });
+    return this.tree._genesis;
   }
 
   getNode(nodeName) {
     return this.tree[nodeName];
+  }
+
+  clean() {
+    delete this.tree._genesis;
   }
 }

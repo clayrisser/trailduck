@@ -1,6 +1,6 @@
 {
   "name": "trailduck",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "a topological cyclic sorting algorithm based on depth-first search (dfs)",
   "keywords": [
     "trailduck",
@@ -59,7 +59,7 @@
     "babel-eslint": "^9.0.0",
     "babel-preset-everything": "^0.1.2",
     "eslint": "^5.5.0",
-    "eslint-config-jam": "^0.1.4",
+    "eslint-config-jam": "^0.1.6",
     "eslint-plugin-jest": "^21.23.0",
     "jest": "^23.6.0",
     "rimraf": "^2.6.2"

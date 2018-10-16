@@ -17,14 +17,10 @@ export default class Explorer {
     while (!this.trail.head.explored) {
       const child = this.location.getUnvisitedChild();
       if (child) {
-        if (child.visited) {
-          const cycle = this.detectCycle(child);
-          if (cycle) {
-            this.markCycle(cycle);
-            this.moveBackwards();
-          } else {
-            this.moveForward(child);
-          }
+        const cycle = this.detectCycle(child);
+        if (cycle) {
+          this.markCycle(cycle);
+          this.moveBackwards();
         } else {
           this.moveForward(child);
         }

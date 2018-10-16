@@ -7,8 +7,6 @@ export default class Node {
 
   cycles = [];
 
-  visited = false;
-
   explored = false;
 
   name = null;
@@ -31,7 +29,6 @@ export default class Node {
   }
 
   visit(previous) {
-    this.visited = true;
     if (previous) {
       delete previous.unvisitedChildren[this.name];
     }
@@ -51,7 +48,6 @@ export default class Node {
     delete this.link;
     delete this.unvisitedChildren;
     delete this.visit;
-    delete this.visited;
     delete this.clean;
   }
 }
